@@ -19,6 +19,5 @@ public class FizzBuzzTest {
         FizzBuzz underTest = new FizzBuzz();
         String spokenWord = underTest.say(1);
         assertThat(spokenWord, is("1"));
-
     }
 }
