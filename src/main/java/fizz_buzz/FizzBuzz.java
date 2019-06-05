@@ -12,7 +12,7 @@ public class FizzBuzz {
     }
 
     private boolean isABuzzNumber(Integer number) {
-        return number == 5;
+        return number % 5 == 0;
     }
 
     private boolean isAFizzNumber(Integer number) {
