@@ -50,17 +50,17 @@ public class FizzBuzzTest {
 
 
     @Test
-    public void whenGiven6FizzBuzzSaysFizz(){
-        assertSpokenWord(6,"Fizz");
+    public void whenGiven6FizzBuzzSaysFizz() {
+        assertSpokenWord(6, "Fizz");
     }
 
     @Test
-    public void whenGiven10FizzBuzzSaysBuzz(){
+    public void whenGiven10FizzBuzzSaysBuzz() {
         assertSpokenWord(10, "Buzz");
     }
 
     @Test
-    public void whenGiven15FizzBuzzSaysFizzBuzz(){
+    public void whenGiven15FizzBuzzSaysFizzBuzz() {
         assertSpokenWord(15, "FizzBuzz");
     }
 }
