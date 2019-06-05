@@ -48,5 +48,4 @@ public class FizzBuzzTest {
         assertSpokenWord(5, "Buzz");
     }
 
-
 }

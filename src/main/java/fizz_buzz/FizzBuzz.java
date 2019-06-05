@@ -5,10 +5,14 @@ public class FizzBuzz {
         if(isAFizzNumber(number)){
             return "Fizz";
         }
-        if(number ==5){
+        if (isABuzzNumber(number)) {
             return "Buzz";
         }
         return number.toString();
+    }
+
+    private boolean isABuzzNumber(Integer number) {
+        return number == 5;
     }
 
     private boolean isAFizzNumber(Integer number) {
