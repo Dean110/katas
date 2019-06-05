@@ -2,9 +2,13 @@ package fizz_buzz;
 
 public class FizzBuzz {
     public String say(Integer number) {
-        if(number == 3){
+        if(isAFizzNumber(number)){
             return "Fizz";
         }
         return number.toString();
+    }
+
+    private boolean isAFizzNumber(Integer number) {
+        return number == 3;
     }
 }
