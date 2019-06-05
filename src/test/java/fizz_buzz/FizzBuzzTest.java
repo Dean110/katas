@@ -48,4 +48,9 @@ public class FizzBuzzTest {
         assertSpokenWord(5, "Buzz");
     }
 
+
+    @Test
+    public void whenGiven6FizzBuzzSaysFizz(){
+        assertSpokenWord(6,"Fizz");
+    }
 }

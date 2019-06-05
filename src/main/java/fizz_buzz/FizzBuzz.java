@@ -16,6 +16,6 @@ public class FizzBuzz {
     }
 
     private boolean isAFizzNumber(Integer number) {
-        return number == 3;
+        return number % 3 == 0;
     }
 }
