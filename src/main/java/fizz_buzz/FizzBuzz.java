@@ -2,13 +2,18 @@ package fizz_buzz;
 
 public class FizzBuzz {
     public String say(Integer number) {
+        String spokenWord = "";
+
         if(isAFizzNumber(number)){
-            return "Fizz";
+            spokenWord += "Fizz";
         }
         if (isABuzzNumber(number)) {
-            return "Buzz";
+            spokenWord += "Buzz";
         }
-        return number.toString();
+        if(spokenWord.isEmpty()){
+            spokenWord += number.toString();
+        }
+        return spokenWord;
     }
 
     private boolean isABuzzNumber(Integer number) {
