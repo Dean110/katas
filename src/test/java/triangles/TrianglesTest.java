@@ -28,4 +28,11 @@ public class TrianglesTest {
     public void twoEqualSidesAndAnUnequalSideIsAnIsoscelesTriangle() {
         assertTriangleType(3, 3, 2, "Isosceles");
     }
+
+    @Test
+    public void passingSidesInADifferentOrderReturnsTheSameResult() {
+        assertTriangleType(3, 3, 2, "Isosceles");
+        assertTriangleType(3, 2, 3, "Isosceles");
+        assertTriangleType(2, 3, 3, "Isosceles");
+    }
 }
