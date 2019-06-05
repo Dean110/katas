@@ -7,7 +7,7 @@ import java.util.List;
 public class TriangleSorter {
     public String analyze(Integer... sides) {
         List<Integer> triangleSides = sortSides(sides);
-
+        
         return determineTriangleType(triangleSides.get(0), triangleSides.get(1), triangleSides.get(2));
     }
 
@@ -18,7 +18,7 @@ public class TriangleSorter {
         if (isARightTriangle(sideA, sideB, sideC)) {
             return "Right";
         }
-        if (sideA == sideB || sideB == sideC) {
+        if (isAnIsocelesTriangle(sideA, sideB, sideC)) {
             return "Isosceles";
         }
         return "Other";
@@ -36,5 +36,9 @@ public class TriangleSorter {
 
     private boolean isARightTriangle(int sideA, int sideB, int sideC) {
         return Math.pow(sideA, 2) + Math.pow(sideB, 2) == Math.pow(sideC, 2);
+    }
+
+    private boolean isAnIsocelesTriangle(int sideA, int sideB, int sideC) {
+        return sideA == sideB || sideB == sideC;
     }
 }
