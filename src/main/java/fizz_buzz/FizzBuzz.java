@@ -5,6 +5,9 @@ public class FizzBuzz {
         if(isAFizzNumber(number)){
             return "Fizz";
         }
+        if(number ==5){
+            return "Buzz";
+        }
         return number.toString();
     }
 

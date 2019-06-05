@@ -24,7 +24,7 @@ public class FizzBuzzTest {
     }
 
     @Before
-    public void setup(){
+    public void setup() {
         underTest = new FizzBuzz();
     }
 
@@ -35,12 +35,18 @@ public class FizzBuzzTest {
 
     @Test
     public void whenGiven2FizzBuzzSays2() {
-        assertSpokenWord(2,"2");
+        assertSpokenWord(2, "2");
     }
 
     @Test
-    public void whenGiven3FizzBuzzSaysFizz(){
+    public void whenGiven3FizzBuzzSaysFizz() {
         assertSpokenWord(3, "Fizz");
     }
+
+    @Test
+    public void whenGiven5FizzBuzzSaysBuzz() {
+        assertSpokenWord(5, "Buzz");
+    }
+
 
 }
