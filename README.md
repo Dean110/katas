@@ -1,4 +1,4 @@
-#Java Katas
+# Java Katas
 This is a collection of katas I've collected from various user group meetups, books, videos, and conferences I've attended over time.  I have attributed the source as best as I can determine for these katas in their description.  
 
 I am borrowing the structure of this repository from Dan Wiebe's [Scala_Katas](https://github.com/dnwiebe/Scala_Katas).  He describes the structure as follows:
@@ -15,7 +15,7 @@ I am borrowing the structure of this repository from Dan Wiebe's [Scala_Katas](h
  may even be _better_ solutions.  The ones provided _are_ solutions, 
  but not _the_ solutions.  
  
-###Triangles
+### Triangles
 From the Columbus Scala User Group's repo of [katas](https://github.com/dnwiebe/Scala_Katas) is a simple kata to determine different types of triangles.
 >Using TDD, write a method or function that accepts three numbers as the lengths of three line segments.
  Determine computationally which of the following cases are true:
