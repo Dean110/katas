@@ -4,6 +4,8 @@ public class TriangleSorter {
     public String analyze(int sideA, int sideB, int sideC) {
         if (isAnEquilateral(sideA, sideB, sideC)) {
             return "Equilateral";
+        } else if (Math.pow(sideA, 2) + Math.pow(sideB, 2) == Math.pow(sideC, 2)) {
+            return "Right";
         } else {
             return "Isosceles";
         }

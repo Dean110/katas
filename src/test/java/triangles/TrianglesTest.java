@@ -30,6 +30,10 @@ public class TrianglesTest {
     }
 
     @Test
+    public void twoSidesWhoseSquaresEqualTheSqareOfTheRemainingSideIsARightTriangle() {
+        assertTriangleType(3, 4, 5, "Right");
+    }
+    @Test
     public void passingSidesInADifferentOrderReturnsTheSameResult() {
         assertTriangleType(3, 3, 2, "Isosceles");
         assertTriangleType(3, 2, 3, "Isosceles");
