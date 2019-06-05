@@ -1,5 +1,6 @@
 package fizz_buzz;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -14,17 +15,27 @@ import static org.hamcrest.core.Is.is;
  * -When the integer passed is a multiple of 5, the method should say Buzz.
  */
 public class FizzBuzzTest {
+
+    private FizzBuzz underTest;
+
+    private void assertSpokenWord(int number, String expectedSpeech) {
+        String spokenWord = underTest.say(number);
+        assertThat(spokenWord, is(expectedSpeech));
+    }
+
+    @Before
+    public void setup(){
+        underTest = new FizzBuzz();
+    }
+
     @Test
     public void whenGiven1FizzBuzzSays1() {
-        FizzBuzz underTest = new FizzBuzz();
-        String spokenWord = underTest.say(1);
-        assertThat(spokenWord, is("1"));
+        assertSpokenWord(1, "1");
     }
-    @Test
 
+    @Test
     public void whenGiven2FizzBuzzSays2() {
-        FizzBuzz underTest = new FizzBuzz();
-        String spokenWord = underTest.say(2);
-        assertThat(spokenWord, is("2"));
+        assertSpokenWord(2,"2");
     }
+
 }
