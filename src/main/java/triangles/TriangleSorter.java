@@ -6,12 +6,15 @@ import java.util.List;
 
 public class TriangleSorter {
     public String analyze(Integer... sides) {
-        List<Integer> triangleSides = sortSides(sides);
-        
-        return determineTriangleType(triangleSides.get(0), triangleSides.get(1), triangleSides.get(2));
+        List<Integer> sortedSides = sortSides(sides);
+
+        return determineTriangleType(sortedSides.get(0), sortedSides.get(1), sortedSides.get(2));
     }
 
     private String determineTriangleType(Integer sideA, Integer sideB, Integer sideC) {
+        if (isNotATriangle(sideA, sideB, sideC)) {
+            return "Not A Triangle";
+        }
         if (isAnEquilateralTriangle(sideA, sideB, sideC)) {
             return "Equilateral";
         }
@@ -28,6 +31,10 @@ public class TriangleSorter {
         List<Integer> triangleSides = Arrays.asList(sides);
         Collections.sort(triangleSides);
         return triangleSides;
+    }
+
+    private boolean isNotATriangle(int sideA, int sideB, int sideC) {
+        return sideA + sideB <= sideC;
     }
 
     private boolean isAnEquilateralTriangle(int sideA, int sideB, int sideC) {

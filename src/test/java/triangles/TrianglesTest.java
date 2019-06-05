@@ -16,9 +16,11 @@ public class TrianglesTest {
 
     private void testAllSideConfigurations(int sideA, int sideB, int sideC, String assertedTriangleType) {
         assertTriangleType(sideA, sideB, sideC, assertedTriangleType);
+        assertTriangleType(sideA, sideC, sideB, assertedTriangleType);
         assertTriangleType(sideB, sideC, sideA, assertedTriangleType);
-
+        assertTriangleType(sideB, sideA, sideC, assertedTriangleType);
         assertTriangleType(sideC, sideA, sideB, assertedTriangleType);
+        assertTriangleType(sideC, sideB, sideA, assertedTriangleType);
     }
 
     @Before
@@ -47,8 +49,15 @@ public class TrianglesTest {
     }
 
     @Test
+    public void twoEqualSidesThatDoNotSumToGreaterThanTheReaminingSideIsNotATriangle() {
+        assertTriangleType(2, 2, 5, "Not A Triangle");
+    }
+
+    @Test
     public void passingSidesInADifferentOrderReturnsTheSameResult() {
         testAllSideConfigurations(3, 3, 2, "Isosceles");
         testAllSideConfigurations(3, 4, 5, "Right");
+        testAllSideConfigurations(2, 3, 4, "Other");
+        testAllSideConfigurations(2, 2, 5, "Not A Triangle");
     }
 }
