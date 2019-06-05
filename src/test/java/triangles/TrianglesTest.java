@@ -42,5 +42,6 @@ public class TrianglesTest {
     @Test
     public void passingSidesInADifferentOrderReturnsTheSameResult() {
         testAllSideConfigurations(3, 3, 2, "Isosceles");
+        testAllSideConfigurations(3, 4, 5, "Right");
     }
 }
