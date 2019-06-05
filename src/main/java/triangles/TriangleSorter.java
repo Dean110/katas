@@ -14,11 +14,14 @@ public class TriangleSorter {
     private String determineTriangleType(Integer sideA, Integer sideB, Integer sideC) {
         if (isAnEquilateralTriangle(sideA, sideB, sideC)) {
             return "Equilateral";
-        } else if (isARightTriangle(sideA, sideB, sideC)) {
+        }
+        if (isARightTriangle(sideA, sideB, sideC)) {
             return "Right";
-        } else {
+        }
+        if (sideA == sideB || sideB == sideC) {
             return "Isosceles";
         }
+        return "Other";
     }
 
     private List<Integer> sortSides(Integer[] sides) {

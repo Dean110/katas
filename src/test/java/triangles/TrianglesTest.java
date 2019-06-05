@@ -17,6 +17,7 @@ public class TrianglesTest {
     private void testAllSideConfigurations(int sideA, int sideB, int sideC, String assertedTriangleType) {
         assertTriangleType(sideA, sideB, sideC, assertedTriangleType);
         assertTriangleType(sideB, sideC, sideA, assertedTriangleType);
+
         assertTriangleType(sideC, sideA, sideB, assertedTriangleType);
     }
 
@@ -34,9 +35,15 @@ public class TrianglesTest {
     public void twoEqualSidesAndAnUnequalSideIsAnIsoscelesTriangle() {
         assertTriangleType(3, 3, 2, "Isosceles");
     }
+
     @Test
     public void twoSidesWhoseSquaresEqualTheSqareOfTheRemainingSideIsARightTriangle() {
         assertTriangleType(3, 4, 5, "Right");
+    }
+
+    @Test
+    public void triangleWithThreeDifferentSidesThatIsNotARightTriangleIsAnOtherTriangle() {
+        assertTriangleType(2, 3, 4, "Other");
     }
 
     @Test
