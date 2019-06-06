@@ -1,5 +1,6 @@
 package babysitter;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -8,18 +9,23 @@ import static org.junit.Assert.fail;
 
 public class BabySitterTest {
 
+    private WageCalculator underTest;
+
+    @Before
+    public void setUp() {
+        underTest = new WageCalculator();
+    }
+
     @Test
     public void oneHourPreBedTimeShouldPay12() {
-        WageCalculator underTest = new WageCalculator();
         int wage = underTest.calculateShiftWage(17, 18, 20);
         assertThat(wage, is(12));
     }
 
     @Test
-    public void shouldThrowInvalidStartTimeException() {
-        WageCalculator underTest = new WageCalculator();
+    public void shouldThrowInvalidStartTimeExceptionForAShiftStartingAt2() {
         try {
-            int wage = underTest.calculateShiftWage(14, 18, 20);
+            underTest.calculateShiftWage(14, 18, 20);
             fail("Did not throw expected exception.");
         } catch (babysitter.WageCalculator.InvalidStartTimeException exception) {
             assertThat(exception.getMessage(), is("14 is an invalid start time for a babysitter shift."));
