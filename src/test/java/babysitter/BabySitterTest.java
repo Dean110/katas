@@ -11,6 +11,15 @@ public class BabySitterTest {
 
     private WageCalculator underTest;
 
+    private void assertInvalidStartTimeExceptionThrown(int startingHour) {
+        try {
+            underTest.calculateShiftWage(startingHour, 18, 20);
+            fail("Did not throw expected exception.");
+        } catch (WageCalculator.InvalidStartTimeException exception) {
+            assertThat(exception.getMessage(), is(startingHour + " is an invalid start time for a babysitter shift."));
+        }
+    }
+
     @Before
     public void setUp() {
         underTest = new WageCalculator();
@@ -24,20 +33,12 @@ public class BabySitterTest {
 
     @Test
     public void shouldThrowInvalidStartTimeExceptionForAShiftStartingAt2() {
-        try {
-            underTest.calculateShiftWage(14, 18, 20);
-            fail("Did not throw expected exception.");
-        } catch (babysitter.WageCalculator.InvalidStartTimeException exception) {
-            assertThat(exception.getMessage(), is("14 is an invalid start time for a babysitter shift."));
-        }
+        assertInvalidStartTimeExceptionThrown(14);
     }
+
     @Test
     public void shouldThrowInvalidStartTimeExceptionForAShiftStartingAt4() {
-        try {
-            underTest.calculateShiftWage(16, 18, 20);
-            fail("Did not throw expected exception.");
-        } catch (babysitter.WageCalculator.InvalidStartTimeException exception) {
-            assertThat(exception.getMessage(), is("16 is an invalid start time for a babysitter shift."));
-        }
+        assertInvalidStartTimeExceptionThrown(16);
     }
+
 }
