@@ -31,5 +31,13 @@ public class BabySitterTest {
             assertThat(exception.getMessage(), is("14 is an invalid start time for a babysitter shift."));
         }
     }
-
+    @Test
+    public void shouldThrowInvalidStartTimeExceptionForAShiftStartingAt4() {
+        try {
+            underTest.calculateShiftWage(16, 18, 20);
+            fail("Did not throw expected exception.");
+        } catch (babysitter.WageCalculator.InvalidStartTimeException exception) {
+            assertThat(exception.getMessage(), is("16 is an invalid start time for a babysitter shift."));
+        }
+    }
 }

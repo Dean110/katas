@@ -2,7 +2,7 @@ package babysitter;
 
 public class WageCalculator {
     public int calculateShiftWage(int startingHour, int endingHour, int bedtime) {
-        if (startingHour == 14)
+        if (startingHour < 17)
             throw new InvalidStartTimeException(startingHour);
         return 12;
     }
