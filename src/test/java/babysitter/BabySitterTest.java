@@ -49,4 +49,15 @@ public class BabySitterTest {
         assertInvalidEndTimeExceptionThrown(6);
         assertInvalidEndTimeExceptionThrown(17);
     }
+
+    @Test
+    public void endTimeBeforeStartTimeThrowsInvalidTimePunchException(){
+        try{
+            underTest.calculateShiftWage(19,18,20);
+            fail("Expected InvalidTimePunchesException not thrown");
+        }catch(InvalidTimePunchesException exception){
+            assertThat(exception.getMessage(),is("Start time is the same time or after end time"));
+
+        }
+    }
 }

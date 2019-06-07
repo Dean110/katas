@@ -6,6 +6,8 @@ public class WageCalculator {
             throw new InvalidStartTimeException(startingHour);
         if (endingTimeIsInvalid(endingHour))
             throw new InvalidEndTimeException(endingHour);
+        if(startingHour>=endingHour)
+            throw new InvalidTimePunchesException();
         return 12;
     }
 
