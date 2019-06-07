@@ -10,6 +10,8 @@ public class WageCalculator {
             throw new InvalidTimePunchesException();
         if(startingHour>=bedtime)
             return 8;
+        if(startingHour>=0&& startingHour<4)
+            return 16;
         return 12;
     }
 
@@ -23,6 +25,7 @@ public class WageCalculator {
 
     private boolean shiftIsInvalid(int startingHour, int endingHour) {
         startingHour = convertTimeToShiftRelativeTime(startingHour);
+        endingHour = convertTimeToShiftRelativeTime(endingHour);
         return startingHour>=endingHour;
     }
 
