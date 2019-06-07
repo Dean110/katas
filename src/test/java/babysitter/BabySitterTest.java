@@ -57,7 +57,6 @@ public class BabySitterTest {
             fail("Expected InvalidTimePunchesException not thrown");
         }catch(InvalidTimePunchesException exception){
             assertThat(exception.getMessage(),is("Start time is the same time or after end time"));
-
         }
     }
 }
