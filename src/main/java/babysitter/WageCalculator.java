@@ -4,6 +4,7 @@ public class WageCalculator {
     public int calculateShiftWage(int startingHour, int endingHour, int bedtime) {
         if (startingTimeIsInvalid(startingHour))
             throw new InvalidStartTimeException(startingHour);
+        if (endingHour==5) throw new InvalidEndTimeException(endingHour);
         return 12;
     }
 
@@ -16,6 +17,13 @@ public class WageCalculator {
         public InvalidStartTimeException(int startTime) {
 
             super(startTime + " is an invalid start time for a babysitter shift.");
+        }
+
+    }
+
+    protected class InvalidEndTimeException extends RuntimeException{
+        public InvalidEndTimeException(int endingTime) {
+            super(endingTime+" is an invalid end time for a babysitter shift.");
         }
     }
 }
