@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.fail;
 
 public class BabySitterTest {
@@ -16,7 +16,7 @@ public class BabySitterTest {
             underTest.calculateShiftWage(startingHour, 18, 20);
             fail("Did not throw expected InvalidStartTimeException.");
         } catch (InvalidStartTimeException exception) {
-            assertThat(exception.getMessage(), is(startingHour + " is an invalid start time for a babysitter shift."));
+            assertThat(exception.getMessage(), equalTo(startingHour + " is an invalid start time for a babysitter shift."));
         }
     }
 
@@ -25,7 +25,7 @@ public class BabySitterTest {
             underTest.calculateShiftWage(17, endingHour, 20);
             fail("Did not throw expected InvalidEndTimeException");
         } catch (InvalidEndTimeException exception) {
-            assertThat(exception.getMessage(), is(endingHour + " is an invalid end time for a babysitter shift."));
+            assertThat(exception.getMessage(), equalTo(endingHour + " is an invalid end time for a babysitter shift."));
         }
     }
 
@@ -34,8 +34,13 @@ public class BabySitterTest {
             underTest.calculateShiftWage(startingHour, endingHour, 20);
             fail("Expected InvalidTimePunchesException not thrown");
         } catch (InvalidTimePunchesException exception) {
-            assertThat(exception.getMessage(), is("Start time is the same time or after end time"));
+            assertThat(exception.getMessage(), equalTo("Start time is the same time or after end time"));
         }
+    }
+
+    private void assertShiftWages(int startingHour, int endingHour, int bedtime, int expectedWage) {
+        int wage = underTest.calculateShiftWage(startingHour, endingHour, bedtime);
+        assertThat(wage, equalTo(expectedWage));
     }
 
     @Before
@@ -62,19 +67,31 @@ public class BabySitterTest {
 
     @Test
     public void oneHourPreBedtimePreMidnightShouldPay12() {
-        int wage = underTest.calculateShiftWage(17, 18, 20);
-        assertThat(wage, is(12));
+        assertShiftWages(17, 18, 20, 12);
     }
 
     @Test
-    public void oneHourPostBedtimePreMidnightShouldPay8(){
-        int wage = underTest.calculateShiftWage(21,22,20);
-        assertThat(wage, is(8));
-    }
-    @Test
-    public void oneHourPostMidnightShouldPay16(){
-        int wage = underTest.calculateShiftWage(0,1,20);
-        assertThat(wage, is(16));
+    public void oneHourPostBedtimePreMidnightShouldPay8() {
+        assertShiftWages(21, 22, 20, 8);
     }
 
+    @Test
+    public void oneHourPostMidnightShouldPay16() {
+        assertShiftWages(0, 1, 20, 16);
+    }
+
+    @Test
+    public void twoHoursPreBedtimePreMidnightShouldPay24() {
+        assertShiftWages(17, 19, 20, 24);
+    }
+
+    @Test
+    public void twoHoursPostBedtimePreMidnightShouldPay16() {
+        assertShiftWages(20, 22, 20, 16);
+    }
+
+    @Test
+    public void twoHoursPostMidnightShouldPay32() {
+        assertShiftWages(0, 2, 22, 32);
+    }
 }

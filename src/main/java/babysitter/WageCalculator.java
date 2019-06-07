@@ -1,14 +1,23 @@
 package babysitter;
 
 public class WageCalculator {
+
+    public static final int PREBEDTIME_PREMIDNIGHT_WAGE = 12;
+    public static final int POSTBEDTIME_PREMIDNIGHT_WAGE = 8;
+    public static final int POSTMIDNIGHT_WAGE = 16;
+
     public int calculateShiftWage(int startingHour, int endingHour, int bedtime) {
         validateShiftTimes(startingHour, endingHour);
 
         if(startingHour>=bedtime)
-            return 8;
+            return calculateHoursWorked(startingHour, endingHour) * POSTBEDTIME_PREMIDNIGHT_WAGE;
         if(startingHour>=0&& startingHour<4)
-            return 16;
-        return 12;
+            return calculateHoursWorked(startingHour, endingHour) * POSTMIDNIGHT_WAGE;
+        return calculateHoursWorked(startingHour, endingHour) * PREBEDTIME_PREMIDNIGHT_WAGE;
+    }
+
+    private int calculateHoursWorked(int startingHour, int endingHour) {
+        return endingHour-startingHour;
     }
 
     private void validateShiftTimes(int startingHour, int endingHour) {
