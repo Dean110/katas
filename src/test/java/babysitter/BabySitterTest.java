@@ -43,17 +43,27 @@ public class BabySitterTest {
     }
 
     @Test
-    public void shouldThrowInvalidStartTimeExceptionForAShiftStartingAt4Am(){
+    public void shouldThrowInvalidStartTimeExceptionForAShiftStartingAt4Am() {
         assertInvalidStartTimeExceptionThrown(4);
     }
 
     @Test
-    public void shouldThrowInvalidEndTimeExceptionForAShiftEndingAfter4Am(){
+    public void shouldThrowInvalidEndTimeExceptionForAShiftEndingAfter4Am() {
         try {
             underTest.calculateShiftWage(17, 5, 20);
             fail("Did not throw expected InvalidEndTimeException");
-        }catch (InvalidEndTimeException exception){
+        } catch (InvalidEndTimeException exception) {
             assertThat(exception.getMessage(), is("5 is an invalid end time for a babysitter shift."));
+        }
+    }
+
+    @Test
+    public void shouldThrowInvalidEndTimeExceptionForAShiftEndingAfter6Am() {
+        try {
+            underTest.calculateShiftWage(17, 6, 20);
+            fail("Did not throw expected InvalidEndTimeException");
+        } catch (InvalidEndTimeException exception) {
+            assertThat(exception.getMessage(), is("6 is an invalid end time for a babysitter shift."));
         }
     }
 
