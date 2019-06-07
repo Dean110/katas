@@ -8,6 +8,8 @@ public class WageCalculator {
             throw new InvalidEndTimeException(endingHour);
         if(shiftIsInvalid(startingHour, endingHour))
             throw new InvalidTimePunchesException();
+        if(startingHour>=bedtime)
+            return 8;
         return 12;
     }
 

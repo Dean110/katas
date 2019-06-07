@@ -44,12 +44,6 @@ public class BabySitterTest {
     }
 
     @Test
-    public void oneHourPreBedTimeShouldPay12() {
-        int wage = underTest.calculateShiftWage(17, 18, 20);
-        assertThat(wage, is(12));
-    }
-
-    @Test
     public void invalidStartandEndTimesThrowExceptions() {
         assertInvalidStartTimeExceptionThrown(14);
         assertInvalidStartTimeExceptionThrown(16);
@@ -64,6 +58,18 @@ public class BabySitterTest {
         assertInvalidTimePunchExceptionThrown(19, 18);
         assertInvalidTimePunchExceptionThrown(18, 18);
         assertInvalidTimePunchExceptionThrown(2, 18);
+    }
+
+    @Test
+    public void oneHourPreBedtimePreMidnightShouldPay12() {
+        int wage = underTest.calculateShiftWage(17, 18, 20);
+        assertThat(wage, is(12));
+    }
+
+    @Test
+    public void oneHourPostBedtimePreMidnightShouldPay8(){
+        int wage = underTest.calculateShiftWage(21,22,20);
+        assertThat(wage, is(8));
     }
 
 }
