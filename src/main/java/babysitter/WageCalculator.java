@@ -12,11 +12,14 @@ public class WageCalculator {
     }
 
     private boolean shiftIsInvalid(int startingHour, int endingHour) {
+        if (startingHour<12){
+            startingHour +=24;
+        }
         return startingHour>=endingHour;
     }
 
     private boolean startingTimeIsInvalid(int startingHour) {
-        return startingHour < 17;
+        return startingHour < 17 && startingHour > 3;
     }
 
     private boolean endingTimeIsInvalid(int endingHour) {
