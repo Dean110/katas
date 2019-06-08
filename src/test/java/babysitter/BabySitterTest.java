@@ -67,37 +67,17 @@ public class BabySitterTest {
     }
 
     @Test
-    public void oneHourPreBedtimePreMidnightShouldPay12() {
+    public void assertingShiftWages(){
         assertShiftWages(17, 18, 20, 12);
-    }
-
-    @Test
-    public void oneHourPostBedtimePreMidnightShouldPay8() {
         assertShiftWages(21, 22, 20, 8);
-    }
-
-    @Test
-    public void oneHourPostMidnightShouldPay16() {
         assertShiftWages(0, 1, 20, 16);
-    }
-
-    @Test
-    public void twoHoursPreBedtimePreMidnightShouldPay24() {
         assertShiftWages(17, 19, 20, 24);
-    }
-
-    @Test
-    public void twoHoursPostBedtimePreMidnightShouldPay16() {
         assertShiftWages(20, 22, 20, 16);
-    }
-
-    @Test
-    public void twoHoursPostMidnightShouldPay32() {
         assertShiftWages(0, 2, 22, 32);
-    }
-
-    @Test
-    public void oneHourBeforeBedtimeOneHourAfterBedtimeBeforeMidnightShouldPay20(){
         assertShiftWages(20,22,21,20);
+        assertShiftWages(23,1,0,28);
+        assertShiftWages(23,1,20,24);
+        assertShiftWages(22,1,23,36);
+        assertShiftWages(17,4,21,136);
     }
 }
