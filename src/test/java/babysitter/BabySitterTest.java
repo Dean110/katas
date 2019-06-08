@@ -95,7 +95,7 @@ public class BabySitterTest {
     public void twoHoursPostMidnightShouldPay32() {
         assertShiftWages(0, 2, 22, 32);
     }
-    @Ignore
+
     @Test
     public void oneHourBeforeBedtimeOneHourAfterBedtimeBeforeMidnightShouldPay20(){
         assertShiftWages(20,22,21,20);
