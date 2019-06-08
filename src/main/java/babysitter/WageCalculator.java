@@ -9,11 +9,19 @@ public class WageCalculator {
     public int calculateShiftWage(int startingHour, int endingHour, int bedtime) {
         validateShiftTimes(startingHour, endingHour);
 
-        if(startingHour>=bedtime)
-            return calculateHoursWorked(startingHour, endingHour) * POSTBEDTIME_PREMIDNIGHT_WAGE;
-        if(startingHour>=0&& startingHour<4)
-            return calculateHoursWorked(startingHour, endingHour) * POSTMIDNIGHT_WAGE;
-        return calculateHoursWorked(startingHour, endingHour) * PREBEDTIME_PREMIDNIGHT_WAGE;
+        WorkShift shift = new WorkShift(startingHour, endingHour, bedtime);
+
+        return tallyShiftSegments(shift);
+    }
+
+    private int tallyShiftSegments(WorkShift shift) {
+        int shiftWage = 0;
+
+        shiftWage += shift.getPreBedtimePreMidnightHours() * PREBEDTIME_PREMIDNIGHT_WAGE;
+        shiftWage += shift.getPostBedtimePreMidnightHours() * POSTBEDTIME_PREMIDNIGHT_WAGE;
+        shiftWage += shift.getPostMidnightHours() * POSTMIDNIGHT_WAGE;
+
+        return shiftWage;
     }
 
     private int calculateHoursWorked(int startingHour, int endingHour) {
